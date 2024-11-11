@@ -1,0 +1,14 @@
+
+<fade-in class="opacity-0 block -mt-20 ease-in-out"
+         _="on load transition my margin-top to 0 over 0.2 seconds then transition opacity to 1 over 0.6 seconds">
+    {% for post in posts %}
+        {% include 'a_posts/post.html' %}
+    {% endfor %}
+            <div
+                    hx-get="{% if tag %}{% url 'category' tag %}{% else %}{% url 'home' %}{% endif %}?page={{ page|add:1 }}"
+                    hx-trigger="revealed"
+                    hx-target="this"
+                    hx-swap="outerHTML">
+            </div>
+
+</fade-in>
